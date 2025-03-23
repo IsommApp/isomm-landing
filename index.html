@@ -13,6 +13,11 @@
             font-family: 'Montserrat', sans-serif;
         }
 
+        /* Aggiungi scroll-padding-top per gestire lo scorrimento con header fisso */
+        html {
+            scroll-padding-top: 80px; /* Valore iniziale, sarà aggiornato dinamicamente */
+        }
+
         body {
             background-color: #F3F4F6; /* Grigio chiaro */
             color: #333;
@@ -53,7 +58,7 @@
         /* Intro Section */
         .intro {
             padding: 80px 50px;
-            padding-top: 160px; /* Aggiunto padding-top per compensare l'header */
+            padding-top: 80px; /* Valore iniziale, sarà aggiornato dinamicamente */
             background-color: #1E3A8A; /* Blu scuro */
             color: #FFFFFF;
             text-align: center;
@@ -79,18 +84,18 @@
             align-items: center;
             background-color: #3B82F6; /* Blu chiaro */
             color: #FFFFFF;
-            padding: 10px 20px; /* Aumentato il padding per il logo più grande */
+            padding: 10px 20px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 10px; /* Testo piccolo */
+            font-size: 10px;
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }
 
         .intro .store-link img {
-            width: 148px; /* Logo più grande */
+            width: 148px;
             height: 48px;
-            margin-right: 8px; /* Spazio tra logo e testo */
+            margin-right: 8px;
         }
 
         .intro .store-link:hover {
@@ -206,7 +211,7 @@
         @media (max-width: 768px) {
             .intro {
                 padding: 50px 20px;
-                padding-top: 100px; /* Ridotto padding-top per schermi mobili */
+                padding-top: 120px; /* Aumentato padding-top per schermi mobili */
             }
 
             .intro h2 {
@@ -293,10 +298,30 @@
     <footer>
         <p>© 2025 ISomm. Tutti i diritti riservati.</p>
         <p>
-            <a href="mailto:info@isomm.com">info@isomm.com</a> |
+            <a href="mailto:isommapp@gmail.com">isommapp@gmail.com</a> |
             <a href="https://www.instagram.com" target="_blank">Instagram</a> |
             <a href="https://www.facebook.com" target="_blank">Facebook</a>
         </p>
     </footer>
+
+    <!-- Script per calcolare dinamicamente l'altezza dell'header -->
+    <script>
+        function adjustIntroPadding() {
+            const header = document.querySelector('header');
+            const intro = document.querySelector('.intro');
+            const headerHeight = header.offsetHeight;
+
+            // Imposta il padding-top della sezione intro in base all'altezza dell'header
+            intro.style.paddingTop = `${headerHeight + 80}px`;
+
+            // Imposta scroll-padding-top per gestire lo scorrimento
+            document.documentElement.style.scrollPaddingTop = `${headerHeight}px`;
+        }
+
+        // Esegui la funzione al caricamento della pagina
+        window.addEventListener('load', adjustIntroPadding);
+        // Esegui la funzione al ridimensionamento della finestra (per gestire cambiamenti su mobile)
+        window.addEventListener('resize', adjustIntroPadding);
+    </script>
 </body>
 </html>
