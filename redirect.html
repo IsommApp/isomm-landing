@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reindirizzamento in corso...</title>
+    <style>
+        body {
+            display: none; /* Nasconde il contenuto della pagina */
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Funzione per ottenere i parametri dall'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const sovrnUrl = urlParams.get('sovrn');
+        const tannicoUrl = urlParams.get('tannico');
+
+        if (!sovrnUrl || !tannicoUrl) {
+            // Se mancano i parametri, reindirizza a una pagina di errore o alla homepage
+            window.location.href = 'https://isomm.it';
+        } else {
+            // Crea un iframe nascosto per caricare il link di Sovrn e registrare il clic
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = decodeURIComponent(sovrnUrl);
+            document.body.appendChild(iframe);
+
+            // Aspetta 2 secondi per assicurarti che il tracciamento di Sovrn sia completato
+            setTimeout(() => {
+                window.location.href = decodeURIComponent(tannicoUrl);
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
