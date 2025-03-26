@@ -21,18 +21,26 @@
 
             // Crea una richiesta a Sovrn per impostare i cookie
             fetch('https://sovrn.co/zv1pijk', { 
-                method: 'GET',
-                credentials: 'include' // Include i cookie nella richiesta
-            })
-            .then(() => {
-                // Dopo aver "toccato" Sovrn, vai a redirect2.html con l'URL di Tannico
-                window.location.replace(`https://isomm.it/redirect2.html?tannico=${encodedTannicoUrl}`);
-            })
-            .catch(error => {
-                console.error('Errore con Sovrn:', error);
-                // In caso di errore, procedi comunque
-                window.location.replace(`https://isomm.it/redirect2.html?tannico=${encodedTannicoUrl}`);
-            });
+    method: 'GET',
+    credentials: 'include' // Tenta di inviare i cookie se permesso
+})
+.then(response => {
+    if (!response.ok) {
+        throw new Error(`Errore HTTP: ${response.status}`);
+    }
+    return response.text(); // Legge la risposta per debug
+})
+.then(data => {
+    console.log('Risposta da Sovrn:', data); // Log della risposta
+})
+.catch(error => {
+    console.error('Errore con Sovrn:', error);
+})
+.finally(() => {
+    // Procedi comunque al secondo redirect
+    window.location.replace(`https://isomm.it/redirect2.html?tannico=${encodedTannicoUrl}`);
+});
+
         });
     </script>
 </head>
