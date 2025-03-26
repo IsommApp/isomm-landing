@@ -6,21 +6,33 @@
     <title>Reindirizzamento in corso...</title>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Ottieni i parametri dall'URL
+            // Ottieni il parametro tannico dall'URL
             const urlParams = new URLSearchParams(window.location.search);
             const tannicoUrl = urlParams.get('tannico');
 
             if (!tannicoUrl) {
-                // Se manca il parametro, reindirizza alla homepage
+                // Se manca il parametro, vai alla homepage
                 window.location.href = 'https://isomm.it';
-            } else {
-                // Codifica il link per il passaggio successivo
-                const encodedTannicoUrl = encodeURIComponent(tannicoUrl);
-                const redirect2Url = `https://isomm.it/redirect2.html?tannico=${encodedTannicoUrl}`;
-
-                // Reindirizza direttamente a redirect2.html
-                window.location.replace(redirect2Url);
+                return;
             }
+
+            // Codifica l'URL di Tannico per il passaggio successivo
+            const encodedTannicoUrl = encodeURIComponent(tannicoUrl);
+
+            // Crea una richiesta a Sovrn per impostare i cookie
+            fetch('https://sovrn.co/zv1pijk', { 
+                method: 'GET',
+                credentials: 'include' // Include i cookie nella richiesta
+            })
+            .then(() => {
+                // Dopo aver "toccato" Sovrn, vai a redirect2.html con l'URL di Tannico
+                window.location.replace(`https://isomm.it/redirect2.html?tannico=${encodedTannicoUrl}`);
+            })
+            .catch(error => {
+                console.error('Errore con Sovrn:', error);
+                // In caso di errore, procedi comunque
+                window.location.replace(`https://isomm.it/redirect2.html?tannico=${encodedTannicoUrl}`);
+            });
         });
     </script>
 </head>
