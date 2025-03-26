@@ -266,6 +266,39 @@
                 font-size: 16px;
             }
         }
+
+        /* Stile per il contenitore del banner */
+        .banner-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 40px 0; /* Distanza sopra e sotto */
+            text-align: center;
+        }
+
+        /* Stile per la scritta sopra il banner */
+        .banner-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1E3A8A; /* Blu scuro */
+            margin-bottom: 10px;
+        }
+
+        /* Stile per l'immagine del banner */
+        .tannico-banner {
+            width: 100%;
+            max-width: 250px; /* Banner più piccolo */
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Effetto hover */
+        .tannico-banner:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+        }
     </style>
 </head>
 <body>
@@ -310,53 +343,13 @@
         </div>
     </section>
 
-
     <!-- Banner Tannico - Centrale alla Pagina -->
-<!-- Banner Tannico - Centrale alla Pagina -->
-<div class="banner-container">
-    <p class="banner-text">Scopri tutti i prodotti in offerta su Tannico</p>
-    <a href="/redirect.html?sovrn=https%3A%2F%2Fsovrn.co%2Fzv1pijk&tannico=https%3A%2F%2Ftannico.it%2Ftutte-le-promo.html" target="_blank">
-        <img src="tannico_banner.png" alt="Offerte Tannico" class="tannico-banner">
-    </a>
-</div>
-
-
-
-<style>
-    /* Stile per il contenitore del banner */
-    .banner-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 40px 0; /* Distanza sopra e sotto */
-        text-align: center;
-    }
-
-    /* Stile per la scritta sopra il banner */
-    .banner-text {
-        font-size: 18px;
-        font-weight: 600;
-        color: #1E3A8A; /* Blu scuro */
-        margin-bottom: 10px;
-    }
-
-    /* Stile per l'immagine del banner */
-    .tannico-banner {
-        width: 100%;
-        max-width: 250px; /* Banner più piccolo */
-        height: auto;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    /* Effetto hover */
-    .tannico-banner:hover {
-        transform: scale(1.05);
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
-    }
-</style>
-
+    <div class="banner-container">
+        <p class="banner-text">Scopri tutti i prodotti in offerta su Tannico</p>
+        <a href="/redirect.html?tannico=https%3A%2F%2Ftannico.it%2Ftutte-le-promo.html" target="_blank">
+            <img src="tannico_banner.png" alt="Offerte Tannico" class="tannico-banner">
+        </a>
+    </div>
 
     <!-- Call-to-Action Section -->
     <section class="cta" id="contact">
