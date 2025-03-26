@@ -3,31 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caricamento...</title>
+    <title>Reindirizzamento in corso...</title>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            // Ottieni il parametro "tannico" dall'URL
             const urlParams = new URLSearchParams(window.location.search);
             const tannicoUrl = urlParams.get('tannico');
 
             if (!tannicoUrl) {
+                // Se manca il parametro "tannico", reindirizza alla homepage
                 window.location.href = 'https://isomm.it';
                 return;
             }
 
-            // Crea un iframe invisibile per caricare Sovrn
-            const iframe = document.createElement('iframe');
-            iframe.src = 'https://sovrn.co/zv1pijk';  // URL per Sovrn
-            iframe.style.display = 'none';  // Nascondi l'iframe
-            document.body.appendChild(iframe);
+            // Codifica l'URL di Tannico per il passaggio successivo
+            const encodedTannicoUrl = encodeURIComponent(tannicoUrl);
 
-            // Dopo un certo tempo o quando l'iframe è stato caricato, esegui il redirect
-            iframe.onload = function() {
-                // Reindirizza al link di Tannico
-                window.location.replace(decodeURIComponent(tannicoUrl));
-            };
+            // Crea una richiesta a Sovrn per il tracciamento
+            fetch('https://sovrn.co/zv1pijk', {
+                method: 'GET',
+                credentials: 'include' // Invia i cookie se consentito
+            })
+            .then(response => {
+                if (response.status === 302) {
+                    // Sovrn ha restituito una redirezione, quindi seguiamo la risposta
+                    window.location.href = response.url;
+                } else {
+                    // Se la risposta non è una 302, reindirizzamento diretto al Tannico
+                    window.location.replace(`https://www.tannico.it/?tannico=${encodedTannicoUrl}`);
+                }
+            })
+            .catch(error => {
+                console.error('Errore con Sovrn:', error);
+                // Se ci sono problemi con Sovrn, reindirizza comunque a Tannico
+                window.location.replace(`https://www.tannico.it/?tannico=${encodedTannicoUrl}`);
+            });
         });
     </script>
 </head>
 <body>
+    <p>Reindirizzamento in corso...</p>
 </body>
 </html>
