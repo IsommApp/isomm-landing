@@ -3,40 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reindirizzamento in corso...</title>
+    <title>Caricamento...</title>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Ottieni il parametro tannico dall'URL
             const urlParams = new URLSearchParams(window.location.search);
             const tannicoUrl = urlParams.get('tannico');
 
             if (!tannicoUrl) {
-                // Se manca il parametro, vai alla homepage
                 window.location.href = 'https://isomm.it';
                 return;
             }
 
-            // Codifica l'URL di Tannico per il passaggio successivo
-            const encodedTannicoUrl = encodeURIComponent(tannicoUrl);
+            // Crea un iframe invisibile per caricare Sovrn
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://sovrn.co/zv1pijk';  // URL per Sovrn
+            iframe.style.display = 'none';  // Nascondi l'iframe
+            document.body.appendChild(iframe);
 
-            // Crea una richiesta a Sovrn per impostare i cookie
-            fetch('https://sovrn.co/zv1pijk', { 
-                method: 'GET',
-                credentials: 'include' // Include i cookie nella richiesta
-            })
-            .then(() => {
-                // Dopo aver "toccato" Sovrn, vai a redirect2.html con l'URL di Tannico
-                window.location.replace(`https://isomm.it/redirect2.html?tannico=${encodedTannicoUrl}`);
-            })
-            .catch(error => {
-                console.error('Errore con Sovrn:', error);
-                // In caso di errore, procedi comunque
-                window.location.replace(`https://isomm.it/redirect2.html?tannico=${encodedTannicoUrl}`);
-            });
+            // Dopo un certo tempo o quando l'iframe è stato caricato, esegui il redirect
+            iframe.onload = function() {
+                // Reindirizza al link di Tannico
+                window.location.replace(decodeURIComponent(tannicoUrl));
+            };
         });
     </script>
 </head>
 <body>
-    <p>Reindirizzamento in corso...</p>
 </body>
 </html>
