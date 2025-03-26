@@ -12,25 +12,20 @@
 </head>
 <body>
     <script>
+        // Link di Sovrn hardcoded
+        const sovrnUrl = 'https://sovrn.co/zv1pijk';
+
         // Funzione per ottenere i parametri dall'URL
         const urlParams = new URLSearchParams(window.location.search);
-        const sovrnUrl = urlParams.get('sovrn');
         const tannicoUrl = urlParams.get('tannico');
 
-        if (!sovrnUrl || !tannicoUrl) {
-            // Se mancano i parametri, reindirizza a una pagina di errore o alla homepage
+        if (!tannicoUrl) {
+            // Se manca il parametro, reindirizza alla homepage
             window.location.href = 'https://isomm.it';
         } else {
-            // Crea un iframe nascosto per caricare il link di Sovrn e registrare il clic
-            const iframe = document.createElement('iframe');
-            iframe.style.display = 'none';
-            iframe.src = decodeURIComponent(sovrnUrl);
-            document.body.appendChild(iframe);
-
-            // Aspetta 2 secondi per assicurarti che il tracciamento di Sovrn sia completato
-            setTimeout(() => {
-                window.location.href = decodeURIComponent(tannicoUrl);
-            }, 2000);
+            // Reindirizza a Sovrn con il link di Tannico come parametro
+            const encodedTannico = encodeURIComponent(tannicoUrl);
+            window.location.href = `${sovrnUrl}?url=${encodedTannico}`;
         }
     </script>
 </body>
