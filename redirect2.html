@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reindirizzamento in corso...</title>
+    <style>
+        body {
+            display: none; /* Nasconde il contenuto della pagina */
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Funzione per ottenere i parametri dall'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const tannicoUrl = urlParams.get('tannico');
+
+        if (!tannicoUrl) {
+            // Se manca il parametro, reindirizza alla homepage
+            window.location.href = 'https://isomm.it';
+        } else {
+            // Reindirizza a Tannico
+            window.location.href = decodeURIComponent(tannicoUrl);
+        }
+    </script>
+</body>
+</html>
