@@ -4,41 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reindirizzamento in corso...</title>
-    <style>
-        body {
-            display: none; /* Nasconde il contenuto della pagina */
-        }
-    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Ottieni i parametri dall'URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const tannicoUrl = urlParams.get('tannico');
+
+            if (!tannicoUrl) {
+                // Se manca il parametro, reindirizza alla homepage
+                window.location.href = 'https://isomm.it';
+            } else {
+                // Codifica il link per il passaggio successivo
+                const encodedTannicoUrl = encodeURIComponent(tannicoUrl);
+                const redirect2Url = `https://isomm.it/redirect2.html?tannico=${encodedTannicoUrl}`;
+
+                // Reindirizza direttamente a redirect2.html
+                window.location.replace(redirect2Url);
+            }
+        });
+    </script>
 </head>
 <body>
-    <script>
-        // Funzione per ottenere i parametri dall'URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const tannicoUrl = urlParams.get('tannico');
-
-        // Link di Sovrn hardcoded
-        const sovrnBaseUrl = 'https://sovrn.co/zv1pijk';
-        // URL di redirect2.html
-        const redirect2BaseUrl = 'https://isomm.it/redirect2.html';
-
-        if (!tannicoUrl) {
-            // Se manca il parametro, reindirizza alla homepage
-            window.location.href = 'https://isomm.it';
-        } else {
-            // Codifica il parametro tannico per passarlo a redirect2.html
-            const encodedTannicoUrl = encodeURIComponent(tannicoUrl);
-            // Costruisci l'URL per redirect2.html
-            const redirect2Url = `${redirect2BaseUrl}?tannico=${encodedTannicoUrl}`;
-
-            // Simula il passaggio attraverso Sovrn
-            // In un ambiente reale, Sovrn dovrebbe reindirizzare a redirect2Url
-            // Per ora, reindirizziamo direttamente a redirect2.html
-            window.location.href = redirect2Url;
-
-            // Nota: In produzione, dovresti configurare Sovrn per reindirizzare a redirect2Url
-            // Esempio (non funzionante senza configurazione di Sovrn):
-            // window.location.href = `${sovrnBaseUrl}?next=${encodeURIComponent(redirect2Url)}`;
-        }
-    </script>
+    <p>Reindirizzamento in corso...</p>
 </body>
 </html>
