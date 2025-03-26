@@ -4,25 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reindirizzamento in corso...</title>
-    <style>
-        body {
-            display: none; /* Nasconde il contenuto della pagina */
-        }
-    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Ottieni i parametri dall'URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const tannicoUrl = urlParams.get('tannico');
+
+            if (!tannicoUrl) {
+                // Se manca il parametro, reindirizza alla homepage
+                window.location.href = 'https://isomm.it';
+            } else {
+                // Reindirizza alla destinazione finale (Tannico)
+                window.location.replace(decodeURIComponent(tannicoUrl));
+            }
+        });
+    </script>
 </head>
 <body>
-    <script>
-        // Funzione per ottenere i parametri dall'URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const tannicoUrl = urlParams.get('tannico');
-
-        if (!tannicoUrl) {
-            // Se manca il parametro, reindirizza alla homepage
-            window.location.href = 'https://isomm.it';
-        } else {
-            // Reindirizza a Tannico
-            window.location.href = decodeURIComponent(tannicoUrl);
-        }
-    </script>
+    <p>Reindirizzamento in corso...</p>
 </body>
 </html>
