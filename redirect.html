@@ -12,20 +12,32 @@
 </head>
 <body>
     <script>
-        // Link di Sovrn hardcoded
-        const sovrnUrl = 'https://sovrn.co/zv1pijk';
-
         // Funzione per ottenere i parametri dall'URL
         const urlParams = new URLSearchParams(window.location.search);
         const tannicoUrl = urlParams.get('tannico');
+
+        // Link di Sovrn hardcoded
+        const sovrnBaseUrl = 'https://sovrn.co/zv1pijk';
+        // URL di redirect2.html
+        const redirect2BaseUrl = 'https://isomm.it/redirect2.html';
 
         if (!tannicoUrl) {
             // Se manca il parametro, reindirizza alla homepage
             window.location.href = 'https://isomm.it';
         } else {
-            // Reindirizza a Sovrn con il link di Tannico come parametro
-            const encodedTannico = encodeURIComponent(tannicoUrl);
-            window.location.href = `${sovrnUrl}?url=${encodedTannico}`;
+            // Codifica il parametro tannico per passarlo a redirect2.html
+            const encodedTannicoUrl = encodeURIComponent(tannicoUrl);
+            // Costruisci l'URL per redirect2.html
+            const redirect2Url = `${redirect2BaseUrl}?tannico=${encodedTannicoUrl}`;
+
+            // Simula il passaggio attraverso Sovrn
+            // In un ambiente reale, Sovrn dovrebbe reindirizzare a redirect2Url
+            // Per ora, reindirizziamo direttamente a redirect2.html
+            window.location.href = redirect2Url;
+
+            // Nota: In produzione, dovresti configurare Sovrn per reindirizzare a redirect2Url
+            // Esempio (non funzionante senza configurazione di Sovrn):
+            // window.location.href = `${sovrnBaseUrl}?next=${encodeURIComponent(redirect2Url)}`;
         }
     </script>
 </body>
