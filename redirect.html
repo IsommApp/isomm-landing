@@ -6,14 +6,38 @@
     <title>Reindirizzamento in corso...</title>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Ottieni il parametro "tannico" dall'URL
+            // Ottieni il parametro "query" dall'URL
             const urlParams = new URLSearchParams(window.location.search);
-            const tannicoUrl = urlParams.get('tannico');
+            const query = urlParams.get('query');
 
-            if (!tannicoUrl) {
-                // Se manca il parametro "tannico", reindirizza alla homepage
+            if (!query) {
+                // Se manca il parametro "query", reindirizza alla homepage
                 window.location.href = 'https://isomm.it';
                 return;
+            }
+
+            // Determina l'URL di Tannico in base al valore di "query"
+            let tannicoUrl;
+            if (query.toLowerCase() === 'promozioni') {
+                // Se query è "promozioni", vai alla pagina delle offerte
+                tannicoUrl = 'https://tannico.it/tutte-le-promo.html';
+            } else {
+                // Altrimenti, considera query come il nome di un vino e costruisci l'URL di ricerca
+                let normalizedQuery = query;
+                try {
+                    // Decodifica il nome del vino, se necessario
+                    while (normalizedQuery.includes('%')) {
+                        normalizedQuery = decodeURIComponent(normalizedQuery);
+                    }
+                } catch (e) {
+                    console.error("Errore nella decodifica di " + query + ": " + e);
+                }
+
+                // Codifica il nome del vino per l'URL di ricerca
+                const encodedQuery = encodeURIComponent(normalizedQuery).replace(/%20/g, '%20');
+
+                // Costruisci l'URL di ricerca su Tannico
+                tannicoUrl = `https://www.tannico.it/catalogsearch/result/?q=${encodedQuery}`;
             }
 
             // Codifica l'URL di Tannico per il passaggio successivo
@@ -29,14 +53,14 @@
                     // Sovrn ha restituito una redirezione, quindi seguiamo la risposta
                     window.location.href = response.url;
                 } else {
-                    // Se la risposta non è una 302, reindirizzamento diretto al Tannico
-                    window.location.replace(`https://www.tannico.it/?tannico=${encodedTannicoUrl}`);
+                    // Se la risposta non è una 302, reindirizzamento diretto a Tannico
+                    window.location.replace(tannicoUrl);
                 }
             })
             .catch(error => {
                 console.error('Errore con Sovrn:', error);
                 // Se ci sono problemi con Sovrn, reindirizza comunque a Tannico
-                window.location.replace(`https://www.tannico.it/?tannico=${encodedTannicoUrl}`);
+                window.location.replace(tannicoUrl);
             });
         });
     </script>
