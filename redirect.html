@@ -52,6 +52,7 @@
                 if (response.status === 302) {
                     // Sovrn ha restituito una redirezione, quindi seguiamo la risposta
                     window.location.href = response.url;
+                    console.log('ok');
                 } else {
                     // Se la risposta non è una 302, reindirizzamento diretto a Tannico
                     window.location.replace(tannicoUrl);
