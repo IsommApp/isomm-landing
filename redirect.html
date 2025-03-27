@@ -4,64 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reindirizzamento in corso...</title>
+    
+    <script type="text/javascript">
+        var vglnk = { key: '97f790c7e654001fe141e3dae100e8d1' };
+        (function(d, t) {
+            var s = d.createElement(t);
+            s.type = 'text/javascript';
+            s.async = true;
+            s.src = '//cdn.viglink.com/api/vglnk.js';
+            var r = d.getElementsByTagName(t)[0];
+            r.parentNode.insertBefore(s, r);
+        }(document, 'script'));
+    </script>
+    
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Ottieni il parametro "query" dall'URL
             const urlParams = new URLSearchParams(window.location.search);
             const query = urlParams.get('query');
 
             if (!query) {
-                // Se manca il parametro "query", reindirizza alla homepage
                 window.location.href = 'https://isomm.it';
                 return;
             }
 
-            // Determina l'URL di Tannico in base al valore di "query"
             let tannicoUrl;
             if (query.toLowerCase() === 'promozioni') {
-                // Se query è "promozioni", vai alla pagina delle offerte
                 tannicoUrl = 'https://tannico.it/tutte-le-promo.html';
             } else {
-                // Altrimenti, considera query come il nome di un vino e costruisci l'URL di ricerca
                 let normalizedQuery = query;
                 try {
-                    // Decodifica il nome del vino, se necessario
                     while (normalizedQuery.includes('%')) {
                         normalizedQuery = decodeURIComponent(normalizedQuery);
                     }
                 } catch (e) {
                     console.error("Errore nella decodifica di " + query + ": " + e);
                 }
-
-                // Codifica il nome del vino per l'URL di ricerca
+                
                 const encodedQuery = encodeURIComponent(normalizedQuery).replace(/%20/g, '%20');
-
-                // Costruisci l'URL di ricerca su Tannico
                 tannicoUrl = `https://www.tannico.it/catalogsearch/result/?q=${encodedQuery}`;
             }
 
-            // Crea una richiesta a Sovrn per il tracciamento
-            fetch('https://sovrn.co/zv1pijk', {
-                method: 'GET',
-                credentials: 'include', // Invia i cookie se consentito
-                redirect: 'manual' // Impedisce al fetch di seguire automaticamente i redirect
-            })
-            .then(response => {
-                if (response.status === 302) {
-                    
-                    // Sovrn ha restituito una redirezione, reindirizza a Tannico
-                    window.location.replace(tannicoUrl);
-                } else {
-                    // Se non è un 302, reindirizza comunque a Tannico
-                   
-                    window.location.replace(tannicoUrl);
-                }
-            })
-            .catch(error => {
-                
-                // Se ci sono problemi con Sovrn (es. CORS), reindirizza comunque a Tannico
-                window.location.replace(tannicoUrl);
-            });
+            // Creazione del link monetizzato con Sovrn Redirect API
+            const affiliateUrl = `https://redirect.viglink.com?key=97f790c7e654001fe141e3dae100e8d1&u=${encodeURIComponent(tannicoUrl)}`;
+            
+            // Redirezione
+            window.location.replace(affiliateUrl);
         });
     </script>
 </head>
