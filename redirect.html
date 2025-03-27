@@ -40,23 +40,25 @@
                 tannicoUrl = `https://www.tannico.it/catalogsearch/result/?q=${encodedQuery}`;
             }
 
-            // Codifica l'URL di Tannico per il passaggio successivo
-            const encodedTannicoUrl = encodeURIComponent(tannicoUrl);
-
             // Crea una richiesta a Sovrn per il tracciamento
             fetch('https://sovrn.co/zv1pijk', {
                 method: 'GET',
-                credentials: 'include' // Invia i cookie se consentito
+                credentials: 'include', // Invia i cookie se consentito
+                redirect: 'manual' // Impedisce al fetch di seguire automaticamente i redirect
             })
             .then(response => {
                 if (response.status === 302) {
-                    // Sovrn ha restituito una redirezione, quindi seguiamo la risposta
-                   window.location.replace(tannicoUrl);
+                    // Sovrn ha restituito una redirezione, reindirizza a Tannico
+                    window.location.replace(tannicoUrl);
+                } else {
+                    // Se non è un 302, reindirizza comunque a Tannico
+                    console.warn('Sovrn non ha restituito un 302, status:', response.status);
+                    window.location.replace(tannicoUrl);
                 }
             })
             .catch(error => {
-                window.alert('Errore con Sovrn:', error);
-                // Se ci sono problemi con Sovrn, reindirizza comunque a Tannico
+                console.error('Errore con Sovrn:', error);
+                // Se ci sono problemi con Sovrn (es. CORS), reindirizza comunque a Tannico
                 window.location.replace(tannicoUrl);
             });
         });
