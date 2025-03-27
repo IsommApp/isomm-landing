@@ -52,7 +52,7 @@
                 if (response.status === 302) {
                     // Sovrn ha restituito una redirezione, quindi seguiamo la risposta
                    window.location.replace(tannicoUrl);
-                
+                }
             })
             .catch(error => {
                 window.alert('Errore con Sovrn:', error);
