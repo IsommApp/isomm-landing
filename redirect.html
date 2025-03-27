@@ -51,15 +51,11 @@
             .then(response => {
                 if (response.status === 302) {
                     // Sovrn ha restituito una redirezione, quindi seguiamo la risposta
-                    window.location.href = response.url;
-                    console.log('ok');
-                } else {
-                    // Se la risposta non è una 302, reindirizzamento diretto a Tannico
-                    window.location.replace(tannicoUrl);
-                }
+                   window.location.replace(tannicoUrl);
+                
             })
             .catch(error => {
-                console.error('Errore con Sovrn:', error);
+                window.alert('Errore con Sovrn:', error);
                 // Se ci sono problemi con Sovrn, reindirizza comunque a Tannico
                 window.location.replace(tannicoUrl);
             });
