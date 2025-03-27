@@ -48,17 +48,17 @@
             })
             .then(response => {
                 if (response.status === 302) {
-                    window.alert(response.status)
+                    
                     // Sovrn ha restituito una redirezione, reindirizza a Tannico
                     window.location.replace(tannicoUrl);
                 } else {
                     // Se non è un 302, reindirizza comunque a Tannico
-                    window.alert('Sovrn non ha restituito un 302, status:', response.status);
+                   
                     window.location.replace(tannicoUrl);
                 }
             })
             .catch(error => {
-                console.error('Errore con Sovrn:', error);
+                
                 // Se ci sono problemi con Sovrn (es. CORS), reindirizza comunque a Tannico
                 window.location.replace(tannicoUrl);
             });
