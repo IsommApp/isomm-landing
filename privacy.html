@@ -1,1 +1,259 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informativa sulla Privacy - ISomm</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
 
+        html {
+            scroll-padding-top: 80px; /* Valore iniziale per lo scroll con header fisso */
+        }
+
+        body {
+            background-color: #F3F4F6; /* Grigio chiaro */
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: #1E3A8A; /* Blu scuro */
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #FFFFFF; /* Bianco */
+        }
+
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #FFFFFF;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #3B82F6; /* Blu chiaro */
+        }
+
+        /* Main Content */
+        .privacy-content {
+            padding: 120px 50px; /* Padding-top aumentato per l’header fisso */
+            background-color: #FFFFFF;
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .privacy-content h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1E3A8A; /* Blu scuro */
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .privacy-content h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1E3A8A;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .privacy-content p {
+            font-size: 16px;
+            font-weight: 300;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .privacy-content ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .privacy-content li {
+            font-size: 16px;
+            font-weight: 300;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .privacy-content a {
+            color: #3B82F6; /* Blu chiaro */
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .privacy-content a:hover {
+            color: #2563EB; /* Blu più scuro */
+            text-decoration: underline;
+        }
+
+        .privacy-content em {
+            font-style: italic;
+            color: #999;
+        }
+
+        /* Footer */
+        footer {
+            padding: 30px 50px;
+            background-color: #1E3A8A;
+            color: #FFFFFF;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        footer a {
+            color: #3B82F6;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .privacy-content {
+                padding: 100px 20px; /* Ridotto per schermi piccoli */
+            }
+
+            .privacy-content h1 {
+                font-size: 28px;
+            }
+
+            .privacy-content h2 {
+                font-size: 20px;
+            }
+
+            .privacy-content p,
+            .privacy-content li {
+                font-size: 14px;
+            }
+        }
+
+        /* Script per padding dinamico */
+        </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>ISomm</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#contact">Contatti</a>
+        </nav>
+    </header>
+
+    <!-- Privacy Content -->
+    <section class="privacy-content">
+        <h1>Informativa sulla Privacy</h1>
+        <p>Ultimo aggiornamento: 30 marzo 2025</p>
+
+        <p>Noi di <strong>ISomm</strong> ci impegniamo a proteggere la tua privacy. Questa Informativa sulla Privacy spiega come raccogliamo, utilizziamo e proteggiamo le informazioni personali che potresti fornirci tramite l'applicazione ISomm.</p>
+
+        <h2>1. Informazioni che raccogliamo</h2>
+        <p>Possiamo raccogliere le seguenti tipologie di dati:</p>
+        <ul>
+            <li><strong>Dati forniti dall'utente</strong>: Informazioni che inserisci volontariamente nell'app, come preferenze personali o feedback.</li>
+            <li><strong>Dati raccolti automaticamente</strong>: Informazioni tecniche come l'identificativo del dispositivo, la versione del sistema operativo e i dati di utilizzo dell'app (es. interazioni con le funzionalità).</li>
+            <li><strong>Annunci</strong>: Utilizziamo Google Mobile Ads per mostrare annunci personalizzati. Ciò potrebbe includere dati anonimi per la profilazione pubblicitaria.</li>
+        </ul>
+        <p><em>Nota</em>: Non raccogliamo dati di localizzazione, anche se in precedenza era presente una configurazione per tale scopo.</p>
+
+        <h2>2. Come utilizziamo le tue informazioni</h2>
+        <p>Utilizziamo i dati raccolti per:</p>
+        <ul>
+            <li>Fornire e migliorare le funzionalità dell'app ISomm.</li>
+            <li>Personalizzare la tua esperienza utente.</li>
+            <li>Mostrare annunci pertinenti tramite Google Mobile Ads.</li>
+            <li>Analizzare l'utilizzo dell'app per scopi statistici.</li>
+        </ul>
+
+        <h2>3. Condivisione dei dati</h2>
+        <p>Non condividiamo i tuoi dati personali con terze parti, salvo:</p>
+        <ul>
+            <li>Con fornitori di servizi (es. Google Mobile Ads) per la gestione degli annunci.</li>
+            <li>Se richiesto dalla legge o per proteggere i nostri diritti.</li>
+        </ul>
+
+        <h2>4. Sicurezza dei dati</h2>
+        <p>Adottiamo misure tecniche e organizzative per proteggere i tuoi dati da accessi non autorizzati, perdita o abuso. Tuttavia, nessuna trasmissione di dati su Internet è completamente sicura.</p>
+
+        <h2>5. I tuoi diritti</h2>
+        <p>Hai il diritto di:</p>
+        <ul>
+            <li>Accedere ai tuoi dati personali.</li>
+            <li>Richiederne la correzione o la cancellazione.</li>
+            <li>Opporsi al loro trattamento.</li>
+        </ul>
+        <p>Per esercitare questi diritti, contattaci all'indirizzo email qui sotto.</p>
+
+        <h2>6. Modifiche a questa informativa</h2>
+        <p>Ci riserviamo il diritto di aggiornare questa Informativa sulla Privacy. Ti informeremo di eventuali modifiche significative tramite l’app o altri canali.</p>
+
+        <h2>7. Contatti</h2>
+        <p>Per domande o richieste relative alla privacy, contattaci a:</p>
+        <p>Email: <a href="mailto:isommapp@gmail.com">isommapp@gmail.com</a></p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 ISomm. Tutti i diritti riservati.</p>
+        <p>
+            <a href="mailto:isommapp@gmail.com">isommapp@gmail.com</a> |
+            <a href="https://www.instagram.com" target="_blank">Instagram</a> |
+            <a href="https://www.facebook.com" target="_blank">Facebook</a>
+        </p>
+    </footer>
+
+    <!-- Script per calcolare dinamicamente l'altezza dell'header -->
+    <script>
+        function adjustPrivacyPadding() {
+            const header = document.querySelector('header');
+            const privacyContent = document.querySelector('.privacy-content');
+            const headerHeight = header.offsetHeight;
+
+            // Imposta il padding-top della sezione privacy in base all'altezza dell'header
+            privacyContent.style.paddingTop = `${headerHeight + 40}px`;
+
+            // Imposta scroll-padding-top per gestire lo scorrimento
+            document.documentElement.style.scrollPaddingTop = `${headerHeight}px`;
+        }
+
+        // Esegui la funzione al caricamento della pagina
+        window.addEventListener('load', adjustPrivacyPadding);
+        // Esegui la funzione al ridimensionamento della finestra
+        window.addEventListener('resize', adjustPrivacyPadding);
+    </script>
+</body>
+</html>
