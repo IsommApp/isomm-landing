@@ -1,58 +1,9 @@
-Skip to content
-Navigation Menu
-IsommApp
-isomm-landing
-
-Type / to search
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-Commit 50cfa6b
-IsommApp
-IsommApp
-authored
-last week
-·
-·
-Verified
-Update index.html
-main
-1 parent 
-49d7523
- commit 
-50cfa6b
-File tree
-Filter files…
-index.html
-1 file changed
-+311
--13
-lines changed
-Search within code
- 
-‎index.html
-+311
--13
-Original file line number	Diff line number	Diff line change
-@@ -1,33 +1,34 @@
-<!DOCTYPE html>
-<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISomm - Il Tuo Sommelier Virtuale</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-  
-    
     <style>
-        /* Stili della pagina */
         * {
             margin: 0;
             padding: 0;
@@ -64,15 +15,14 @@ Original file line number	Diff line number	Diff line change
         html {
             scroll-padding-top: 80px; /* Valore iniziale, sarà aggiornato dinamicamente */
         }
+
         body {
-            background-color: #F3F4F6;
             background-color: #F3F4F6; /* Grigio chiaro */
             color: #333;
         }
 
         /* Header */
         header {
-            background-color: #1E3A8A;
             background-color: #1E3A8A; /* Blu scuro */
             padding: 20px 50px;
             display: flex;
@@ -82,13 +32,15 @@ Original file line number	Diff line number	Diff line change
             position: fixed;
             width: 100%;
             top: 0;
-@@ -36,41 +37,269 @@
+            z-index: 1000;
+        }
 
         header h1 {
             font-size: 24px;
             font-weight: 700;
             color: #FFFFFF; /* Bianco */
         }
+
         nav a {
             margin-left: 20px;
             text-decoration: none;
@@ -96,9 +48,11 @@ Original file line number	Diff line number	Diff line change
             font-weight: 600;
             transition: color 0.3s ease;
         }
+
         nav a:hover {
             color: #3B82F6; /* Blu chiaro */
         }
+
         /* Intro Section */
         .intro {
             padding: 80px 50px;
@@ -107,6 +61,7 @@ Original file line number	Diff line number	Diff line change
             color: #FFFFFF;
             text-align: center;
         }
+
         .intro h2 {
             font-size: 36px;
             font-weight: 700;
@@ -121,6 +76,7 @@ Original file line number	Diff line number	Diff line change
             margin-left: auto;
             margin-right: auto;
         }
+
         .intro .store-link {
             display: inline-flex;
             align-items: center;
@@ -133,14 +89,17 @@ Original file line number	Diff line number	Diff line change
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }
+
         .intro .store-link img {
             width: 148px;
             height: 48px;
             margin-right: 8px;
         }
+
         .intro .store-link:hover {
             background-color: #2563EB; /* Blu più scuro */
         }
+
         /* Banner Section */
         .banner {
             margin-top: 30px;
@@ -154,31 +113,37 @@ Original file line number	Diff line number	Diff line change
             font-size: 16px;
             transition: background-color 0.3s ease;
         }
+
         .banner:hover {
             background-color: #E0E7FF; /* Blu molto chiaro */
         }
+
         /* Images Section */
         .images {
             padding: 80px 50px;
             background-color: #FFFFFF;
             text-align: center;
         }
+
         .images h3 {
             font-size: 36px;
             font-weight: 600;
             margin-bottom: 50px;
             color: #1E3A8A; /* Blu scuro */
         }
+
         .image-grid {
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
             gap: 30px;
         }
+
         .image-card {
             max-width: 300px;
             text-align: center;
         }
+
         .image-card img {
             width: 300px;
             height: 300px;
@@ -187,17 +152,20 @@ Original file line number	Diff line number	Diff line change
             margin-bottom: 20px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
+
         .image-card h4 {
             font-size: 20px;
             font-weight: 600;
             margin-bottom: 10px;
             color: #1E3A8A;
         }
+
         .image-card p {
             font-size: 16px;
             font-weight: 300;
             color: #666;
         }
+
         /* Call-to-Action Section */
         .cta {
             padding: 80px 50px;
@@ -205,16 +173,19 @@ Original file line number	Diff line number	Diff line change
             text-align: center;
             color: #FFFFFF;
         }
+
         .cta h3 {
             font-size: 36px;
             font-weight: 600;
             margin-bottom: 20px;
         }
+
         .cta p {
             font-size: 18px;
             font-weight: 300;
             margin-bottom: 30px;
         }
+
         .cta .btn {
             background-color: #3B82F6;
             color: #FFFFFF;
@@ -224,9 +195,11 @@ Original file line number	Diff line number	Diff line change
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }
+
         .cta .btn:hover {
             background-color: #2563EB;
         }
+
         /* Footer */
         footer {
             padding: 30px 50px;
@@ -234,57 +207,69 @@ Original file line number	Diff line number	Diff line change
             color: #FFFFFF;
             text-align: center;
         }
+
         footer p {
             font-size: 14px;
             font-weight: 300;
         }
+
         footer a {
             color: #3B82F6;
             text-decoration: none;
             margin: 0 10px;
         }
+
         footer a:hover {
             text-decoration: underline;
         }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .intro {
                 padding: 50px 20px;
                 padding-top: 120px; /* Aumentato padding-top per schermi mobili */
             }
+
             .intro h2 {
                 font-size: 28px;
             }
+
             .intro p {
                 font-size: 16px;
             }
+
             .banner {
                 font-size: 14px;
                 padding: 10px 20px;
             }
+
             .images {
                 padding: 50px 20px;
             }
+
             .image-grid {
                 flex-direction: column;
                 align-items: center;
             }
+
             .cta {
                 padding: 50px 20px;
             }
+
             .cta h3 {
                 font-size: 28px;
             }
+
             .cta p {
                 font-size: 16px;
             }
         }
+
         /* Stile per il contenitore del banner */
         .banner-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 50px 0;
             margin: 40px 0; /* Distanza sopra e sotto */
             text-align: center;
         }
@@ -293,7 +278,6 @@ Original file line number	Diff line number	Diff line change
         .banner-text {
             font-size: 18px;
             font-weight: 600;
-            color: #1E3A8A;
             color: #1E3A8A; /* Blu scuro */
             margin-bottom: 10px;
         }
@@ -301,7 +285,6 @@ Original file line number	Diff line number	Diff line change
         /* Stile per l'immagine del banner */
         .tannico-banner {
             width: 100%;
-            max-width: 250px;
             max-width: 250px; /* Banner più piccolo */
             height: auto;
             border-radius: 10px;
@@ -320,7 +303,9 @@ Original file line number	Diff line number	Diff line change
     <!-- Header -->
     <header>
         <h1>ISomm</h1>
-@@ -80,14 +309,83 @@ <h1>ISomm</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#contact">Contatti</a>
         </nav>
     </header>
 
@@ -333,6 +318,7 @@ Original file line number	Diff line number	Diff line change
             Disponibile su Google Play
         </a>
     </section>
+
     <!-- Images Section -->
     <section class="images" id="images">
         <h3>ISomm in Azione</h3>
@@ -354,6 +340,7 @@ Original file line number	Diff line number	Diff line change
             </div>
         </div>
     </section>
+
     <!-- Banner Tannico con link monetizzato -->
 <div class="banner-container">
     <p class="banner-text">Scopri tutte le promozioni su Tannico</p>
@@ -361,13 +348,14 @@ Original file line number	Diff line number	Diff line change
         <img src="tannico_banner.png" alt="Offerte Tannico" class="tannico-banner">
     </a>
 </div>
-  <!-- Script Sovrn per il tracking delle affiliazioni -->
+
     <!-- Call-to-Action Section -->
     <section class="cta" id="contact">
         <h3>Prova ISomm Oggi!</h3>
         <p>Unisciti a migliaia di appassionati di cibo e vino. Scopri un nuovo modo di gustare i tuoi pasti.</p>
         <a href="mailto:isommapp@gmail.com" class="btn">Contattaci</a>
     </section>
+
     <!-- Footer -->
     <footer>
         <p>© 2025 ISomm. Tutti i diritti riservati.</p>
@@ -377,17 +365,21 @@ Original file line number	Diff line number	Diff line change
             <a href="https://www.facebook.com" target="_blank">Facebook</a>
         </p>
     </footer>
+
     <!-- Script per calcolare dinamicamente l'altezza dell'header -->
     <script>
         function adjustIntroPadding() {
             const header = document.querySelector('header');
             const intro = document.querySelector('.intro');
             const headerHeight = header.offsetHeight;
+
             // Imposta il padding-top della sezione intro in base all'altezza dell'header
             intro.style.paddingTop = `${headerHeight + 80}px`;
+
             // Imposta scroll-padding-top per gestire lo scorrimento
             document.documentElement.style.scrollPaddingTop = `${headerHeight}px`;
         }
+
         // Esegui la funzione al caricamento della pagina
         window.addEventListener('load', adjustIntroPadding);
         // Esegui la funzione al ridimensionamento della finestra (per gestire cambiamenti su mobile)
@@ -397,11 +389,12 @@ Original file line number	Diff line number	Diff line change
     <script type="text/javascript">
       var vglnk = { key: '97f790c7e654001fe141e3dae100e8d1' };
       (function(d, t) {
-0 commit comments
-Comments
-0
- (0)
-Comment
-You're receiving notifications because you're subscribed to this thread.
-
-Update index.html · IsommApp/isomm-landing@50cfa6b
+          var s = d.createElement(t);
+          s.type = 'text/javascript'; s.async = true;
+          s.src = '//cdn.viglink.com/api/vglnk.js';
+          var r = d.getElementsByTagName(t)[0];
+          r.parentNode.insertBefore(s, r);
+      }(document, 'script'));
+    </script>
+</body>
+</html>
