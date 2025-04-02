@@ -7,18 +7,18 @@
     
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Funzione per fare una chiamata a Sovrn e impostare i cookie
-            function initializeSovrnCookies(callback) {
-                // Usiamo un iframe nascosto per fare la chiamata a Sovrn
+            // Funzione per impostare i cookie di Tannico
+            function initializeTannicoCookies(callback) {
+                // Usiamo un iframe nascosto per caricare la homepage di Tannico
                 const iframe = document.createElement('iframe');
                 iframe.style.display = 'none'; // Nascondiamo l'iframe
-                iframe.src = 'https://sovrn.co/zv1pijk';
+                iframe.src = 'https://www.tannico.it/'; // Chiamata diretta a Tannico
                 document.body.appendChild(iframe);
 
-                // Aspettiamo un po' per assicurarci che i cookie siano impostati
+                // Aspettiamo che i cookie siano impostati
                 setTimeout(() => {
                     callback(); // Procedi con il reindirizzamento
-                }, 1000); // Aspettiamo 1 secondo (puoi regolare questo valore se necessario)
+                }, 1500); // Aspettiamo 1,5 secondi (regolabile)
             }
 
             // Funzione per eseguire il reindirizzamento dinamico
@@ -55,8 +55,8 @@
                 window.location.replace(affiliateUrl);
             }
 
-            // Esegui la chiamata a Sovrn per impostare i cookie, poi procedi con il reindirizzamento
-            initializeSovrnCookies(performRedirect);
+            // Esegui la chiamata per impostare i cookie, poi procedi con il reindirizzamento
+            initializeTannicoCookies(performRedirect);
         });
     </script>
 </head>
