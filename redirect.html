@@ -7,18 +7,35 @@
     
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Funzione per impostare i cookie di Tannico
-            function initializeTannicoCookies(callback) {
-                // Usiamo un iframe nascosto per caricare la homepage di Tannico
-                const iframe = document.createElement('iframe');
-                iframe.style.display = 'none'; // Nascondiamo l'iframe
-                iframe.src = 'https://www.tannico.it/'; // Chiamata diretta a Tannico
-                document.body.appendChild(iframe);
+            // Funzione per impostare i cookie tramite Sovrn
+            function initializeSovrnCookies(callback) {
+                // Apriamo una finestra temporanea per caricare il link Sovrn
+                const popup = window.open('https://sovrn.co/zv1pijk', '_blank', 'width=1,height=1,left=-9999,top=-9999');
+                
+                if (!popup) {
+                    console.error("Il popup è stato bloccato. Consenti i popup per procedere.");
+                    // Fallback: reindirizza direttamente se il popup è bloccato
+                    callback();
+                    return;
+                }
 
-                // Aspettiamo che i cookie siano impostati
+                // Aspettiamo che la finestra completi il caricamento
+                const checkPopup = setInterval(() => {
+                    if (popup.closed || popup.location.href.includes('tannico.it')) {
+                        clearInterval(checkPopup);
+                        popup.close(); // Chiudiamo la finestra
+                        callback(); // Procediamo con il reindirizzamento
+                    }
+                }, 500); // Controlliamo ogni 500ms
+
+                // Timeout di sicurezza: chiudiamo dopo 5 secondi se non succede nulla
                 setTimeout(() => {
-                    callback(); // Procedi con il reindirizzamento
-                }, 1500); // Aspettiamo 1,5 secondi (regolabile)
+                    clearInterval(checkPopup);
+                    if (!popup.closed) {
+                        popup.close();
+                    }
+                    callback();
+                }, 5000);
             }
 
             // Funzione per eseguire il reindirizzamento dinamico
@@ -55,8 +72,8 @@
                 window.location.replace(affiliateUrl);
             }
 
-            // Esegui la chiamata per impostare i cookie, poi procedi con il reindirizzamento
-            initializeTannicoCookies(performRedirect);
+            // Esegui la chiamata a Sovrn per impostare i cookie, poi procedi con il reindirizzamento
+            initializeSovrnCookies(performRedirect);
         });
     </script>
 </head>
