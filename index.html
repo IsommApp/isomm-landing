@@ -80,22 +80,25 @@
         }
 
         .intro .store-link {
-            display: inline-flex;
+            display: flex;
             align-items: center;
+            justify-content: center; /* Centra il contenuto */
             background-color: #3B82F6; /* Blu chiaro */
             color: #FFFFFF;
             padding: 10px 20px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 10px;
+            font-size: 14px; /* Aumenta il font-size per leggibilità */
             border-radius: 5px;
             transition: background-color 0.3s ease;
-            margin: 0 10px; /* Spazio tra i bottoni */
+            margin: 10px; /* Margine uniforme */
+            width: 280px; /* Larghezza fissa per uniformare i pulsanti */
+            text-align: center;
         }
 
         .intro .store-link img {
-            width: 148px;
-            height: 48px;
+            width: 120px; /* Riduci leggermente la larghezza */
+            height: auto; /* Mantieni le proporzioni */
             margin-right: 8px;
         }
 
@@ -241,6 +244,19 @@
                 font-size: 16px;
             }
 
+            /* Impila i pulsanti verticalmente su mobile */
+            .intro .store-link {
+                width: 100%; /* Usa tutta la larghezza disponibile */
+                max-width: 300px; /* Limita la larghezza massima */
+                margin: 10px 0; /* Margine verticale per separare i pulsanti */
+                font-size: 12px; /* Font-size leggibile su mobile */
+            }
+
+            .intro . Wstore-link img {
+                width: 100px; /* Riduci ulteriormente la larghezza su mobile */
+                height: auto;
+            }
+
             .banner {
                 font-size: 14px;
                 padding: 10px 20px;
@@ -316,7 +332,7 @@
     <section class="intro" id="home">
         <h2>Eleva i Tuoi Pasti con ISomm</h2>
         <p>ISomm è il sommelier virtuale che trasforma ogni piatto in un’esperienza unica: trova l’abbinamento perfetto tra cibo e vino in pochi secondi, con suggerimenti personalizzati e un database ricco di sapori italiani e internazionali.</p>
-        <a href="https://play.google.com/store/apps?hl=it" target="_blank" class="store-link">
+        <a href="https://play.google.com/store/apps/details?id=com.isomm.android" target="_blank" class="store-link">
             <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play Store">
             Disponibile su Google Play
         </a>
